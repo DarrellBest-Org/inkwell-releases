@@ -1,0 +1,41 @@
+name: Bug report
+description: Something in Inkwell doesn't work as it should
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Tip: in Inkwell, **Help > Report a Bug** fills this in for you, including your version. Issues are public, so leave out manuscript text you want to keep private."
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What went wrong, and any message you saw.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a project
+        2. ...
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+  - type: input
+    id: version
+    attributes:
+      label: Inkwell version
+      description: Settings > Updates shows it, or run `inkwell --version`.
+      placeholder: "0.5.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options: [Windows, macOS, Linux]
+    validations:
+      required: true
