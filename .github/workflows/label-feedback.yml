@@ -1,0 +1,26 @@
+name: Label in-app reports
+
+# Reports filed from inside Inkwell carry a hidden marker
+# (<!-- inkwell-feedback: bug|feature -->). A prefilled link can't set labels for
+# people without triage access, so this workflow adds them.
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    if: contains(github.event.issue.body, '<!-- inkwell-feedback:')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || "";
+            const kind = (body.match(/<!-- inkwell-feedback: (bug|feature) -->/) || [])[1];
+            if (!kind) return;
+            const labels = [kind === "bug" ? "bug" : "enhancement", "from-app"];
+            await github.rest.issues.addLabels({ ...context.repo, issue_number: context.payload.issue.number, labels });

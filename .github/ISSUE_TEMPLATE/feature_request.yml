@@ -1,0 +1,15 @@
+name: Feature request
+description: An idea that would make Inkwell better for your writing
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: "Tip: in Inkwell, **Help > Request a Feature** opens this for you."
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea
+      description: The problem it solves for your writing, and how you picture it working.
+    validations:
+      required: true
